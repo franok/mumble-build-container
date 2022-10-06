@@ -15,9 +15,9 @@ jobs:
       id: Dockerfile
       uses: juliangruber/read-file-action@v1
       with:
-        path: ./Dockerfile
+        path: Dockerfile
     - name: Echo Dockerfile
-      run: echo "${{ steps.Dockerfile }}"
+      run: echo "${{ steps.Dockerfile.outputs.content }}"
     - name: list results
       run: |
         ls -l
