@@ -8,13 +8,11 @@ on:
 jobs:
   main:
     runs-on: ubuntu-latest
-    container:
-        image: quay.io/pypa/manylinux2014_x86_64
     steps:
-    - name: checkout repo
+    - name: Checkout Repo
       uses: actions/checkout@v3
-    - name: print Dockerfile
-      run: cat Dockerfile
+    - name: Run Docker Build Container
+      run: docker build .
     - name: list results
       run: |
         ls -l
