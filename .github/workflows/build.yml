@@ -16,7 +16,22 @@ jobs:
       with:
         repository: mumble-voip/mumble
         path: mumble
+        ref: v1.4.287
         submodules: recursive
-    - name: list results
+    - name: Create dist directory
+      run: |
+        mkdir -p dist
+    - name: Docker run static mumble build container
+      run: |
+        docker run --rm \
+          -v $(pwd)/mumble:/mumble-build/sources \
+          -v $(pwd)/dist:/mumble-build/dist \
+          -v $(pwd)/mumble-static-build-script.sh:/mumble-build/build-mumble.sh \
+          --name mumble-build-container ubuntu:20.04 \
+          bash /mumble-build/build-mumble.sh
+    - name: List Results
       run: |
         ls -l
+    - name: List build artifacts
+      run: |
+        ls -l dist/
