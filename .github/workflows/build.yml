@@ -9,10 +9,14 @@ jobs:
   main:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout Repo
+    - name: Checkout This Repo
       uses: actions/checkout@v3
-    - name: Run Docker Build Container
-      run: docker build .
+    - name: Checkout Mumble Repo
+      uses: actions/checkout@v3
+      with:
+        repository: mumble-voip/mumble
+        path: mumble
+        submodules: recursive
     - name: list results
       run: |
         ls -l
