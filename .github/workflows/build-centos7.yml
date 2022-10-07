@@ -59,12 +59,12 @@ jobs:
     - name: gcc check
       run: |
         gcc --version && ldd --version
-    - name: install cmake
+    - name: install cmake3
       run: |
-        yum -y install cmake
+        yum -y install cmake3
     - name: cmake check
       run: |
-        cmake --version
+        cmake3 --version
     - name: download source
       run: |
         wget -O mumble.tar.gz https://github.com/mumble-voip/mumble/releases/download/v$VERSION/mumble-$VERSION.tar.gz
@@ -76,7 +76,7 @@ jobs:
         mkdir build
     - name: configure build
       run: |
-        cd build && cmake ../mumble-$VERSION.src -Dstatic=ON -Dclient=OFF -Dzeroconf=OFF -DCMAKE_BUILD_TYPE=Release
+        cd build && cmake3 ../mumble-$VERSION.src -Dstatic=ON -Dclient=OFF -Dzeroconf=OFF -DCMAKE_BUILD_TYPE=Release
     - run: cd build && ls -l
     - name: run build
       run: |
