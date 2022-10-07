@@ -9,7 +9,7 @@ jobs:
   main:
     runs-on: ubuntu-latest
     container:
-        image: centos7
+        image: docker.io/library/centos:7
     steps:
     - name: test system
       run: 
