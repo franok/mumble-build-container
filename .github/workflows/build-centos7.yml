@@ -1,0 +1,84 @@
+name: Build CentOs 7
+
+on:
+- push
+- pull_request
+
+# Package search: https://rpmfind.net/linux/rpm2html/search.php
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    container:
+        image: centos7
+    steps:
+    - name: test system
+      run: 
+        ls -l
+    - name: install dnf
+      run: |
+        yum -y install dnf dnf-plugins-core
+    - name: add support for additional packages
+      run: |
+        dnf -y install epel-release
+    # - name: add support for powertools
+    #  run: |
+    #    dnf config-manager --set-enabled powertools
+    - name: install development tools
+      run: |
+        dnf -y group install "Development Tools"
+    - name: install ICE
+      run: |
+        dnf -y install https://zeroc.com/download/ice/3.7/el7/ice-repo-3.7.el7.noarch.rpm
+    - name: install ICE devel
+      run: |
+        dnf -y install libice-c++-devel libice3.7-c++
+    - name: install dnf deps
+      run: |
+        dnf -y install \
+        qt5-qtbase-devel \
+        qt5-qtsvg-devel  \
+        qt-sqlite \
+        openssl-devel \
+        protobuf-devel \
+        libsndfile-devel \
+        libXi-devel \
+        libXext-devel \
+        speech-dispatcher-devel \
+        avahi-compat-libdns_sd-devel \
+        alsa-lib-devel \
+        libICE-devel \
+        libogg-devel \
+        boost-devel \
+        libcap-devel \
+        poco-devel \
+        wget
+    - name: gcc check
+      run: |
+        gcc --version && ldd --version
+    - name: cmake check
+      run: |
+        cmake --version
+    - name: Checkout Mumble Repo
+      uses: actions/checkout@v3
+      with:
+        repository: mumble-voip/mumble
+        path: mumble
+        ref: v1.4.287
+        submodules: recursive
+    - name: create build directory
+      run: |
+        mkdir build
+    - name: configure build
+      run: |
+        cd build && cmake ../mumble -Dstatic=ON -Dclient=OFF -Dzeroconf=OFF -DCMAKE_BUILD_TYPE=Release
+    - run: cd build && ls -l
+    - name: run build
+      run: |
+        cd build && make -j $(nproc)
+    - name: list results
+      run: |
+        ls -l build/
+    - name: Upload a Build Artifact As-Is
+      uses: kittaakos/upload-artifact-as-is@v0
+      with:
+        path: build/
