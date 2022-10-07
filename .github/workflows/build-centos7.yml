@@ -56,6 +56,9 @@ jobs:
     - name: gcc check
       run: |
         gcc --version && ldd --version
+    - name: install cmake
+      run: |
+        yum -y install cmake
     - name: cmake check
       run: |
         cmake --version
