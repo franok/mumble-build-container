@@ -5,6 +5,9 @@ on:
 # - pull_request
 - workflow_dispatch
 
+env:
+  VERSION: 1.4.287
+
 # Package search: https://rpmfind.net/linux/rpm2html/search.php
 jobs:
   main:
@@ -62,19 +65,18 @@ jobs:
     - name: cmake check
       run: |
         cmake --version
-    - name: Checkout Mumble Repo
-      uses: actions/checkout@v3
-      with:
-        repository: mumble-voip/mumble
-        path: mumble
-        ref: v1.4.287
-        submodules: recursive
+    - name: download source
+      run: |
+        wget -O mumble.tar.gz https://github.com/mumble-voip/mumble/releases/download/v$VERSION/mumble-$VERSION.tar.gz
+    - name: unpack source
+      run: |
+        tar -xvf mumble.tar.gz
     - name: create build directory
       run: |
         mkdir build
     - name: configure build
       run: |
-        cd build && cmake ../mumble -Dstatic=ON -Dclient=OFF -Dzeroconf=OFF -DCMAKE_BUILD_TYPE=Release
+        cd build && cmake ../mumble-$VERSION.src -Dstatic=ON -Dclient=OFF -Dzeroconf=OFF -DCMAKE_BUILD_TYPE=Release
     - run: cd build && ls -l
     - name: run build
       run: |
