@@ -35,3 +35,7 @@ jobs:
     - name: List build artifacts
       run: |
         ls -l dist/
+    - name: Upload a Build Artifact As-Is
+      uses: kittaakos/upload-artifact-as-is@v0
+      with:
+        path: dist/
