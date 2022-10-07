@@ -1,4 +1,4 @@
-name: Build
+name: Build static on Ubuntu
 
 on:
 # - push
