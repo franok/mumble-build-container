@@ -1,8 +1,9 @@
 name: Build
 
 on:
-- push
-- pull_request
+# - push
+# - pull_request
+- workflow_dispatch
 
 # Package search: https://rpmfind.net/linux/rpm2html/search.php
 jobs:
