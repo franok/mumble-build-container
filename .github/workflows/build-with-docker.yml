@@ -17,6 +17,5 @@ jobs:
     - run: |
         set -x
 
-        docker version
+        docker build - < $(pwd)/Dockerfile
 
-        docker run --rm hello-world
