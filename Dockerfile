@@ -6,7 +6,7 @@ RUN apt install -y build-essential git cmake python3 python-is-python3 perl vim
 
 WORKDIR /root
 
-RUN git clone https://github.com/mumble-voip/mumble.git mumble --branch 1.4.x --single-branch
+RUN git clone https://github.com/mumble-voip/mumble.git mumble --branch v1.4.287 --single-branch
 RUN git clone https://github.com/openssl/openssl openssl --branch OpenSSL_1_1_1-stable --single-branch
 RUN git clone https://github.com/qt/qt5.git qt5 --branch 5.15 --single-branch
 
