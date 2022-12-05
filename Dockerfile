@@ -25,7 +25,7 @@ RUN make install
 
 WORKDIR /root/qt5
 
-RUN git submodule update --init
+RUN ./init-repository --module-subset=qt5compat,qtbase,qtcoap,qtgrpc,qthttpserver,qtlanguageserver,qtopcua,qtpositioning,qtsystems,qttools,qttranslations
 
 ENV MAKEFLAGS="-j 4"
 RUN ./configure -confirm-license -opensource -v \
