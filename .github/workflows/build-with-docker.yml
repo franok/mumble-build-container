@@ -32,5 +32,5 @@ jobs:
     - name: Upload a Build Artifact As-Is
       uses: actions/upload-artifact@v3
       with:
-        path: dist/mumble-server
+        path: dist/
 
