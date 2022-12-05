@@ -17,7 +17,7 @@ jobs:
       run: |
         set -x
 
-        docker build - < $(pwd)/Dockerfile
+        docker build -t mumble-build-container-image - < $(pwd)/Dockerfile
         
     - name: Create dist directory
       run: |
@@ -27,7 +27,7 @@ jobs:
       run: |
         docker run --rm \
           -v $(pwd)/dist:/root/mumble/build \
-          bash ls -la /root/mumble/build
+          mumble-build-container-image
           
     - name: Upload a Build Artifact As-Is
       uses: actions/upload-artifact@v3
