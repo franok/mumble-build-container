@@ -20,4 +20,9 @@ jobs:
         set -x
 
         docker build - < $(pwd)/Dockerfile
+        
+    - name: Upload a Build Artifact As-Is
+      uses: kittaakos/upload-artifact-as-is@v0
+      with:
+        path: /root/mumble/build
 
