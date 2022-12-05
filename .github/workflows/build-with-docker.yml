@@ -25,7 +25,7 @@ jobs:
         
     - name: Docker run static mumble build container to access binary
       run: |
-        docker run --rm \
+        docker run -d \
           -v $(pwd)/dist:/root/mumble/build \
           mumble-build-container-image
           
