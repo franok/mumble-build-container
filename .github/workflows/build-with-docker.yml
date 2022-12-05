@@ -16,7 +16,6 @@ jobs:
     - name: Checkout This Repo
       uses: actions/checkout@v3
     - name: docker build
-      uses: docker-practice/actions-setup-docker@master
       run: |
         set -x
 
