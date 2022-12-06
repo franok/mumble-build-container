@@ -26,7 +26,7 @@ jobs:
     - name: Docker run static mumble build container to access binary
       run: |
         docker run -d \
-          -v $(pwd)/dist:/root/mumble/build \
+          -v $(pwd)/dist:/root/dist \
           mumble-build-container-image
           
     - name: Upload a Build Artifact As-Is
