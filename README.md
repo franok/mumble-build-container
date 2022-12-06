@@ -6,7 +6,7 @@ This project was born out of https://github.com/Uberspace/lab/issues/1191
 
 ## Disclaimer
 
-This repository is NOT related to the official mumble project by any means!
+This repository is NOT related to [the official mumble project](https://github.com/mumble-voip/mumble) by any means!
 
 No warranty is made by the author regarding up-to-dateness and functional correctness of the murmur binary.
 
