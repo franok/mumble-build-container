@@ -1,0 +1,42 @@
+name: Build murmur static
+
+on:
+- workflow_dispatch
+
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout This Repo
+      uses: actions/checkout@v3
+      
+    - name: docker build image from Dockerfile
+      run: |
+        set -x
+
+        docker build -t murmur-build-image - < $(pwd)/Dockerfile
+        
+    - name: Create dist directory
+      run: |
+        mkdir -p dist
+        
+    - name: Docker run static murmur build container to access binary
+      run: |
+        docker run --rm \
+          -v $(pwd)/dist:/root/dist \
+          murmur-build-image cp -rpa /root/mumble/build/. /root/dist/
+          
+    - name: Upload Build Artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: build-artifacts
+        path: dist/
+    
+    - name: Upload Murmur static binary and murmur.ini
+      uses: actions/upload-artifact@v3
+      with:
+        name: murmur-static
+        path: |
+          dist/murmur.x86_64
+          dist/murmur.ini
