@@ -104,10 +104,6 @@ RUN apt install -y ninja-build file
 RUN mkdir build
 
 WORKDIR /root/mumble
-# COPY libcap.patch .
-# COPY libprotobuf.patch .
-# RUN git apply < libcap.patch
-# RUN git apply < libprotobuf.patch
 
 WORKDIR /root/mumble/build
 
@@ -123,13 +119,15 @@ RUN cmake .. -Dserver=ON \
 	-Dtests=OFF \
 	-DCMAKE_SYSTEM_PREFIX_PATH="/static-prefix;/root/static-prefix" \
 	-DCMAKE_EXE_LINKER_FLAGS="-static-libgcc -static-libstdc++" \
-	-DCMAKE_C_FLAGS="-static-libgcc -static-libstdc++" \
-	-DCMAKE_CXX_FLAGS="-static-libgcc -static-libstdc++" \
+	-DCMAKE_C_FLAGS="-static-libgcc -static-libstdc++ -static" \
+	-DCMAKE_CXX_FLAGS="-static-libgcc -static-libstdc++ -static" \
 	-DCMAKE_FIND_LIBRARY_SUFFIXES=".a" \
 	-GNinja
-	# -DCMAKE_EXE_LINKER_FLAGS="-Wl,-Bstatic -static-libgcc -static-libstdc++" \
+
+# replace every .so commandline argument with the static version
+RUN sed -i -e 's/\.so/.a/g' build.ninja
 RUN ninja -v
 RUN file mumble-server
-RUN ldd ./mumble-server
+RUN ldd ./mumble-server || true
 
 ENTRYPOINT bash
