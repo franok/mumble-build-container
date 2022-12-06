@@ -11,9 +11,10 @@ This repository is NOT related to the official mumble project by any means!
 No warranty is made by the author regarding up-to-dateness and functional correctness of the murmur binary.
 
 
-## Getting a static murmur binary
+## Download static murmur binary
 
-Download it from the Github Actions build artifact "murmur-static".
+Download a pre-compiled binary from [this repository's release section](https://github.com/franok/mumble-build-container/releases).
+For further reference, see [Uberlab Mumble guide](https://lab.uberspace.de/guide_mumble/).
 
 ## Known issues
 
