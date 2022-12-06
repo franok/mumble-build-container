@@ -27,7 +27,7 @@ jobs:
       run: |
         docker run -d \
           -v $(pwd)/dist:/root/dist \
-          mumble-build-container-image
+          mumble-build-container-image cp -rpa /root/mumble/build/. /root/dist/
           
     - name: Upload a Build Artifact As-Is
       uses: actions/upload-artifact@v3
