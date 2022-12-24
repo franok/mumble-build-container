@@ -10,6 +10,11 @@
   "labels": [
     "dependencies"
   ],
+  "packageRules": [
+    {
+      "excludePackageNames": [".github/workflows"]
+    }
+  ],
   // regexManagers to update via regex capture groups (https://docs.renovatebot.com/modules/manager/regex/)
   "regexManagers": [
     {
