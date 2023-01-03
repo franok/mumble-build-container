@@ -1,0 +1,27 @@
+{
+  // json5 allows comments (https://docs.renovatebot.com/configuration-options/)
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base"
+  ],
+  "reviewers": [
+    "franok"
+  ],
+  "labels": [
+    "dependencies"
+  ],
+  "packageRules": [
+    {
+      "excludePackageNames": [] // nothing to exclude right now
+    }
+  ],
+  // regexManagers to update via regex capture groups (https://docs.renovatebot.com/modules/manager/regex/)
+  "regexManagers": [
+    {
+      "fileMatch": ["^Dockerfile$"],
+      "matchStrings": ["ENV MUMBLE_VERSION=(?<currentValue>.*?)\\n"],
+      "depNameTemplate": "mumble-voip/mumble", // github project identifier (<org>/<repo>)
+      "datasourceTemplate": "github-releases" // https://docs.renovatebot.com/modules/datasource/#supported-datasources
+    }
+  ]
+}
