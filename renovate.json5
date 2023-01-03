@@ -12,7 +12,7 @@
   ],
   "packageRules": [
     {
-      "excludePackageNames": ["github-actions"]
+      "excludePackageNames": [] // nothing to exclude right now
     }
   ],
   // regexManagers to update via regex capture groups (https://docs.renovatebot.com/modules/manager/regex/)
