@@ -12,9 +12,8 @@
   ],
   "packageRules": [
     {
-      "excludePackageNames": [], // nothing to exclude right now
       "packageNames": ["mumble-voip/mumble"],
-      "extractVersion": "^v(?<version>.*)$"
+      "versioning": "regex:^v?(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)?$"
     }
   ],
   // regexManagers to update via regex capture groups (https://docs.renovatebot.com/modules/manager/regex/)
