@@ -10,19 +10,14 @@
   "labels": [
     "dependencies"
   ],
-  "packageRules": [
-    {
-      "packageNames": ["mumble-voip/mumble"],
-      "versioning": "regex:^v?(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)?$"
-    }
-  ],
   // regexManagers to update via regex capture groups (https://docs.renovatebot.com/modules/manager/regex/)
   "regexManagers": [
     {
       "fileMatch": ["^Dockerfile$"],
-      "matchStrings": ["ENV MUMBLE_VERSION=(?<currentValue>.*?)\\n"],
-      "depNameTemplate": "mumble-voip/mumble", // github project identifier (<org>/<repo>)
-      "datasourceTemplate": "github-releases" // https://docs.renovatebot.com/modules/datasource/#supported-datasources
+      "matchStrings": [
+        "datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?\\sENV .*?_VERSION=(?<currentValue>.*)\\s"
+      ],
+      "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}" // https://docs.renovatebot.com/modules/manager/regex/#advanced-capture
     }
   ]
 }

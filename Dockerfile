@@ -6,6 +6,7 @@ RUN apt install -y build-essential git cmake python3 python-is-python3 perl vim
 
 WORKDIR /root
 
+# renovate: datasource=github-releases depName=mumble-voip/mumble versioning=regex:^v?(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)?$
 ENV MUMBLE_VERSION=v1.4.287
 ENV OPENSSL_VERSION=OpenSSL_1_1_1-stable
 ENV QT5_VERSION=5.15
