@@ -19,7 +19,7 @@
   "regexManagers": [
     {
       "fileMatch": ["^Dockerfile$"],
-      "matchStrings": ["ENV MUMBLE_VERSION=(?<currentValue>.*?)\\n"],
+      "matchStrings": ["ENV MUMBLE_VERSION=(?<currentValue>.*?)\n"],
       "depNameTemplate": "mumble-voip/mumble", // github project identifier (<org>/<repo>)
       "datasourceTemplate": "github-releases" // https://docs.renovatebot.com/modules/datasource/#supported-datasources
     }
