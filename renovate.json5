@@ -13,15 +13,15 @@
   "packageRules": [
     {
       "excludePackageNames": [], // nothing to exclude right now
-      "managers": ["regex"],
-      "extractVersion": "^v?(?<version>.*)$"
+      "packageNames": ["mumble-voip/mumble"],
+      "extractVersion": "^v(?<version>.*)$"
     }
   ],
   // regexManagers to update via regex capture groups (https://docs.renovatebot.com/modules/manager/regex/)
   "regexManagers": [
     {
       "fileMatch": ["^Dockerfile$"],
-      "matchStrings": ["ENV MUMBLE_VERSION=(?<currentValue>.*?)\n"],
+      "matchStrings": ["ENV MUMBLE_VERSION=(?<currentValue>.*?)\\n"],
       "depNameTemplate": "mumble-voip/mumble", // github project identifier (<org>/<repo>)
       "datasourceTemplate": "github-releases" // https://docs.renovatebot.com/modules/datasource/#supported-datasources
     }
