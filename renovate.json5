@@ -15,8 +15,11 @@
     {
       "fileMatch": ["^Dockerfile$"],
       "matchStrings": [
-        "#\\srenovate:\\sdatasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?( extractVersion=(?<extractVersion>.*?))?\\s(ENV|ARG) .*?_VERSION=(?<currentValue>.*)\\s"
-      ]
+        "ENV MUMBLE_VERSION=(?<currentValue>.*?)\\n"
+      ],
+      "depNameTemplate": "mumble-voip/mumble",
+      "datasourceTemplate": "github-releases",
+      "versioningTemplate": "node"
     }
   ]
 }
