@@ -19,7 +19,7 @@
       ],
       "depNameTemplate": "mumble-voip/mumble",
       "datasourceTemplate": "github-releases",
-      "versioningTemplate": "semver"
+      "versioningTemplate": "semver-coerced"
     }
   ]
 }
