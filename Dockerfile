@@ -6,13 +6,12 @@ RUN apt install -y build-essential git cmake python3 python-is-python3 perl vim
 
 WORKDIR /root
 
-# renovate: datasource=github-releases depName=mumble-voip/mumble extractVersion=^v(?<version>.*)$
-ENV MUMBLE_VERSION=1.4.287
+ENV MUMBLE_VERSION=v1.4.287
 ENV OPENSSL_VERSION=OpenSSL_1_1_1-stable
 ENV QT5_VERSION=5.15
 
 # get dependencies to build from source
-RUN git clone https://github.com/mumble-voip/mumble.git mumble --branch v${MUMBLE_VERSION} --single-branch
+RUN git clone https://github.com/mumble-voip/mumble.git mumble --branch ${MUMBLE_VERSION} --single-branch
 RUN git clone https://github.com/openssl/openssl openssl --branch ${OPENSSL_VERSION} --single-branch
 RUN git clone https://github.com/qt/qt5.git qt5 --branch ${QT5_VERSION} --single-branch
 
