@@ -15,7 +15,7 @@
     {
       "fileMatch": ["^Dockerfile$"],
       "matchStrings": [
-        "ENV MUMBLE_VERSION=(?<currentValue>.*?)\\n"
+        "^ENV MUMBLE_VERSION=(?<currentValue>.*?)$"
       ],
       "depNameTemplate": "mumble-voip/mumble",
       "datasourceTemplate": "github-releases",
