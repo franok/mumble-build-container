@@ -7,7 +7,7 @@ RUN apt install -y build-essential git cmake python3 python-is-python3 perl vim
 WORKDIR /root
 
 ENV MUMBLE_VERSION=v1.4.287
-ENV OPENSSL_VERSION=OpenSSL_1_1_1t
+ENV OPENSSL_VERSION=OpenSSL_1_1_1s
 ENV QT5_VERSION=5.15
 
 # get dependencies to build from source
