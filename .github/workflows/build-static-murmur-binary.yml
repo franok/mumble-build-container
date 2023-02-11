@@ -40,3 +40,4 @@ jobs:
         path: |
           dist/murmur.x86_64
           dist/murmur.ini
+          dist/LICENSE
