@@ -29,7 +29,7 @@
       "depNameTemplate": "openssl/openssl",
       "datasourceTemplate": "github-tags",
       "versioningTemplate": "loose"
-      "extractVersion": "^(?<version>OpenSSL_(\d+(?:\.\d+)*)(.*))" 
+      "extractVersion": "^OpenSSL_(?<version>.*)$" 
     }
   ]
 }
