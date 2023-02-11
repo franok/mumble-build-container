@@ -119,6 +119,9 @@ RUN apt install -y ninja-build file
 
 RUN mkdir build
 
+# add license to build directory, so it is available with the build artifacts
+COPY LICENSE build/
+
 WORKDIR /root/mumble/build
 
 RUN cmake .. -Dserver=ON \
@@ -149,8 +152,5 @@ RUN ldd ./mumble-server || true
 
 # rename server binary
 RUN mv mumble-server murmur.x86_64
-
-# add license to build directory
-COPY ../LICENSE .
 
 CMD ["bash"]
