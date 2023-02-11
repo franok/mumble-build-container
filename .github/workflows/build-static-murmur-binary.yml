@@ -6,6 +6,7 @@ on:
 
 jobs:
   main:
+    name: Build for branch ${{ github.ref_name }}
     runs-on: ubuntu-latest
     steps:
     - name: Checkout This Repo
