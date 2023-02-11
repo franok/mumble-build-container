@@ -150,4 +150,7 @@ RUN ldd ./mumble-server || true
 # rename server binary
 RUN mv mumble-server murmur.x86_64
 
+# add license to build directory
+COPY ../LICENSE .
+
 CMD ["bash"]
