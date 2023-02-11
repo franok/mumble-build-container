@@ -120,7 +120,7 @@ RUN apt install -y ninja-build file
 RUN mkdir build
 
 # add license to build directory, so it is available with the build artifacts
-COPY LICENSE build/
+RUN cp -p LICENSE build/
 
 WORKDIR /root/mumble/build
 
