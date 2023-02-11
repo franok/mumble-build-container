@@ -10,6 +10,16 @@
   "labels": [
     "dependencies"
   ],
+  "packageRules": [
+    {
+      "description": "strip OpenSSL_ prefix",
+      "matchDatasources": ["github-tags"],
+      "matchManagers": ["regex"],
+      "matchPackageNames": ["openssl/openssl"],
+      "extractVersion": "^OpenSSL_(?<version>.*)$",
+      "groupName": "openssl-group"
+    }
+  ],
   // regexManagers to update via regex capture groups (https://docs.renovatebot.com/modules/manager/regex/)
   "regexManagers": [
     { // mumble
@@ -28,7 +38,8 @@
       ],
       "depNameTemplate": "openssl/openssl",
       "datasourceTemplate": "github-tags",
-      "versioningTemplate": "loose"
+      "versioningTemplate": "loose",
+      "extractVersionTemplate": "openssl-group" // matches groupName in package-rules
     }
   ]
 }
