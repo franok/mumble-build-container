@@ -12,7 +12,7 @@
   ],
   // regexManagers to update via regex capture groups (https://docs.renovatebot.com/modules/manager/regex/)
   "regexManagers": [
-    {
+    { // mumble
       "fileMatch": ["^Dockerfile$"],
       "matchStrings": [
         "ENV MUMBLE_VERSION=(?<currentValue>.*?)\\n"
@@ -20,6 +20,15 @@
       "depNameTemplate": "mumble-voip/mumble",
       "datasourceTemplate": "github-releases",
       "versioningTemplate": "semver-coerced"
+    },
+    { // OpenSSL v1
+      "fileMatch": ["^Dockerfile$"],
+      "matchStrings": [
+        "ENV OPENSSL_VERSION=OpenSSL_(?<currentValue>.*?)\\n"
+      ],
+      "depNameTemplate": "openssl/openssl",
+      "datasourceTemplate": "github-tags",
+      "versioningTemplate": "loose"
     }
   ]
 }
