@@ -29,13 +29,13 @@ jobs:
           murmur-build-image cp -rpa /root/mumble/build/. /root/dist/
           
     - name: Upload Build Artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: build-artifacts
         path: dist/
     
     - name: Upload Murmur static binary and murmur.ini
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: murmur-static
         path: |
