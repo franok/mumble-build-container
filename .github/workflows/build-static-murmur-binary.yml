@@ -26,7 +26,7 @@ jobs:
       run: |
         docker run --rm \
           -v $(pwd)/dist:/root/dist \
-          murmur-build-image cp -rpa /root/mumble/build/. /root/dist/
+          murmur-build-image cp -rpa /dist/. /root/dist/
           
     - name: Upload Build Artifacts
       uses: actions/upload-artifact@v3
