@@ -1,4 +1,4 @@
-name: Build murmur static
+name: Test Contributions: Build murmur static
 
 on:
 - workflow_dispatch
