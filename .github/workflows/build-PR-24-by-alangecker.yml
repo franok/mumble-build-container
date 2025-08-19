@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout This Repo
-      uses: actions/checkout@v3
+      uses: actions/checkout@v5
       with:
         repository: 'alangecker/mumble-build-container'
         ref: 'mumble-v1.6'
